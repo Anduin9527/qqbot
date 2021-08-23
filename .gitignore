@@ -4,11 +4,11 @@
 
 ###log###
 qqbot.log
-cq/data/cache
-cq/data/images
-cq/data/leveldb
-cq/data/videos
-cq/data/voices
+cq/data/cache/*
+cq/data/images/*
+cq/data/leveldb/*
+cq/data/videos/*
+cq/data/voices/*
 cq/logs/*
 cq/nohup.out
 cq/session.token

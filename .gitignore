@@ -1,0 +1,153 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/python
+# Edit at https://www.toptal.com/developers/gitignore?templates=python
+
+###log###
+qqbot.log
+cq/data/cache
+cq/data/images
+cq/data/leveldb
+cq/data/videos
+cq/data/voices
+cq/logs/*
+cq/nohup.out
+cq/session.token
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+zero/__pycache__/
+zero/*.py[cod]
+zero/*$py.class
+
+# C extensions
+zero/*.so
+
+# Distribution / packaging
+zero/.Python
+zero/build/
+zero/develop-eggs/
+zero/dist/
+zero/downloads/
+zero/eggs/
+zero/.eggs/
+zero/lib/
+zero/lib64/
+zero/parts/
+zero/sdist/
+zero/var/
+zero/wheels/
+zero/pip-wheel-metadata/
+zero/share/python-wheels/
+zero/*.egg-info/
+zero/.installed.cfg
+zero/*.egg
+zero/MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+zero/*.manifest
+zero/*.spec
+
+# Installer logs
+zero/pip-log.txt
+zero/pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+zero/htmlcov/
+zero/.tox/
+zero/.nox/
+zero/.coverage
+zero/.coverage.*
+zero/.cache
+zero/nosetests.xml
+zero/coverage.xml
+zero/*.cover
+zero/*.py,cover
+zero/.hypothesis/
+zero/.pytest_cache/
+zero/pytestdebug.log
+
+# Translations
+zero/*.mo
+zero/*.pot
+
+# Django stuff:
+zero/*.log
+zero/local_settings.py
+zero/db.sqlite3
+zero/db.sqlite3-journal
+
+# Flask stuff:
+zero/instance/
+zero/.webassets-cache
+
+# Scrapy stuff:
+zero/.scrapy
+
+# Sphinx documentation
+zero/docs/_build/
+zero/doc/_build/
+
+# PyBuilder
+zero/target/
+
+# Jupyter Notebook
+zero/.ipynb_checkpoints
+
+# IPython
+zero/profile_default/
+zero/ipython_config.py
+
+# pyenv
+zero/.python-version
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+zero/__pypackages__/
+
+# Celery stuff
+zero/celerybeat-schedule
+zero/celerybeat.pid
+
+# SageMath parsed files
+zero/*.sage.py
+
+# Environments
+zero/.env
+zero/.venv
+zero/env/
+zero/venv/
+zero/ENV/
+zero/env.bak/
+zero/venv.bak/
+
+# Spyder project settings
+zero/.spyderproject
+zero/.spyproject
+
+# Rope project settings
+zero/.ropeproject
+
+# mkdocs documentation
+zero/site
+
+# mypy
+zero/.mypy_cache/
+zero/.dmypy.json
+zero/dmypy.json
+
+# Pyre type checker
+zero/.pyre/
+
+# pytype static type analyzer
+zero/.pytype/
+
+# End of https://www.toptal.com/developers/gitignore/api/python

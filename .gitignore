@@ -4,6 +4,10 @@
 
 ###log###
 qqbot.log
+cq/device.json
+nohup.out
+cq.log
+
 cq/data/cache/*
 cq/data/images/*
 cq/data/leveldb/*
@@ -12,6 +16,7 @@ cq/data/voices/*
 cq/logs/*
 cq/nohup.out
 cq/session.token
+
 
 
 ### Python ###

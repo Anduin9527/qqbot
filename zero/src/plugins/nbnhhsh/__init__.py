@@ -45,7 +45,7 @@ async def _(bot: Bot, event: Event, state: dict):
   response = response.json()
 
   if not response:
-    await trans.finish("没有对应的翻译")
+    await trans.finish("bt，wm00hdzyjh，没有对应的翻译")
   try:
     msg = "得到的翻译如下：\n"
     for i in response[0]['trans']:
@@ -53,4 +53,4 @@ async def _(bot: Bot, event: Event, state: dict):
     msg = msg.strip("，")
     await trans.finish(msg)
   except KeyError:
-    await trans.finish("没有对应的翻译111")
+    await trans.finish("坏了Z世代又出新词了，没有对应的翻译")

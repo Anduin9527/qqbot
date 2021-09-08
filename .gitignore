@@ -5,9 +5,10 @@
 ###log###
 qqbot.log
 cq/device.json
+cq/config.yml
 nohup.out
 cq.log
-
+cq/config.yml
 cq/data/cache/*
 cq/data/images/*
 cq/data/leveldb/*

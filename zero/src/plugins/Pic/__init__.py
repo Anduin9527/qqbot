@@ -8,7 +8,7 @@ from nonebot.adapters.cqhttp import Message, Bot, MessageEvent, MessageSegment
 from nonebot.adapters import Event
 import numpy as np
 
-jg = on_keyword(keywords={"jg", "杰哥", "yyj"}, rule=to_me())
+jg = on_keyword(keywords={"jg", "杰哥", "yyj"}, rule=to_me(), priority=10)
 
 
 @jg.handle()

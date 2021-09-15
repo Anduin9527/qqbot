@@ -1,6 +1,6 @@
 <div align="center"> 
 
-# ZeroBot
+# ZeroBot v1.1
 
 基于 [Nonebot2](https://github.com/nonebot/nonebot2)以及[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)实现的qq机器人
 
@@ -12,6 +12,7 @@
 - [x] 加群退群提示
 - [x] 发送服务器本地图片
 - [x] 接入lolicon api 发setu
+- [x] 自建后端接入Asoul发病小作文
 - [ ] 接入腾讯云COS
 - [ ] Roll点系统
 - [ ] 成语接龙

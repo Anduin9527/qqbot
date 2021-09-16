@@ -7,7 +7,7 @@ from pydantic.tools import T
 
 from .data_source import get_pic_url
 
-setu = on_keyword({'setu', '涩图', '色图', '来点'}, rule=to_me(), priority=7)
+setu = on_keyword({'setu', '涩图', '色图', '来点', '色图来'}, priority=7)
 r18_switch = on_command(
     '就这', aliases={'来点给劲的', '不够涩'}, rule=to_me(), permission=SUPERUSER, priority=8)
 r18 = False
@@ -15,9 +15,9 @@ r18 = False
 
 @setu.handle()
 async def _(bot: Bot, event: Event, state: T_State):
-  
+
   key_word = str(event.get_message()).strip()
-  words = ['setu', '涩图', '色图', '来点']
+  words = ['setu', '涩图',  '来点', '色图来', '色图']
   for word in words:
     key_word = key_word.replace(word, '')
   tags = key_word.split()

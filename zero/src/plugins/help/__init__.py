@@ -17,7 +17,7 @@ async def _(bot: Bot, event: Event, state: T_State):
   命令： @bot /nbnhhsh、@bot /翻译翻译 等
   eg. @bot /翻译翻译 惊喜
   3.setu
-  命令： @bot 来点、@bot setu 等
+  命令：来点、setu 等
   eg. @bot 来点 眼镜 伏特加
   4.jg
   命令： @bot jg

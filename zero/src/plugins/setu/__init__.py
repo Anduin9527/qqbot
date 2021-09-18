@@ -1,3 +1,5 @@
+from time import sleep
+from async_timeout import asyncio
 from nonebot import on_keyword, on_command
 from nonebot.rule import to_me
 from nonebot.typing import T_State
@@ -26,7 +28,11 @@ async def _(bot: Bot, event: Event, state: T_State):
   img_url = await get_pic_url(tag=tags, r18=r18)
   if not img_url:
     await setu.finish('找不到相关的图o')
-  await setu.send(message=MessageSegment.image(img_url))
+  result = await setu.send(message=MessageSegment.image(img_url))
+  if r18:
+    message_id = result['message_id']
+    sleep(10)
+    await bot.delete_msg(message_id=message_id)
   await setu.finish()
 
 

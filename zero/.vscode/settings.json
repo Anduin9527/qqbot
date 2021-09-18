@@ -1,0 +1,9 @@
+{
+  "python.autoComplete.extraPaths": [
+    "./home/anduin9527/miniconda3/envs/envqqbot/lib/python3.9/site-packages/nonebot/",
+    "./home/anduin9527/miniconda3/envs/envqqbot/lib/python3.9/site-packages/aiohttp/"    
+    ],
+  "python.analysis.extraPaths":[
+    "./home/anduin9527/miniconda3/envs/envqqbot/lib/python3.9/site-packages/"
+  ]
+}

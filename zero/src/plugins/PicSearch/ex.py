@@ -87,7 +87,7 @@ async def get_content_from_url(url: str):
     async with aiohttp.ClientSession() as session:
       async with session.get(url, headers=headers) as resp:
         return "base64://" + b64encode(await resp.read()).decode()
-  except InvalidURL:
+  except aiohttp.client_exceptions.InvalidURL:
     return url
 
 
@@ -104,6 +104,6 @@ async def get_des(url: str):
     return
   for name, href, pic_url in image_data:
     content = await get_content_from_url(pic_url)
-    msg = str(MessageSegment.image(file=content) +
-              f"\n本子名称：{name}\n" + f"链接{href}\n")
+    msg = MessageSegment.image(file=content) + \
+        f"\n本子名称：{name}\n" + f"链接{href}\n"
     yield msg

@@ -87,7 +87,7 @@ async def get_des(url: str):
     yield msg
     return
   for pic in image_data:
-    msg = str(MessageSegment.image(
-        file=str(pic[0])) + f"\n相似度:{pic[1]}\n标题:{pic[2]}\npixivid:{pic[3]}\nmember:{pic[4]}\n")
+    msg = MessageSegment.image(
+        file=pic[0]) + f"\n相似度:{pic[1]}\n标题:{pic[2]}\npixivid:{pic[3]}\nmember:{pic[4]}\n"
     yield msg
   pass

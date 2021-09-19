@@ -10,18 +10,29 @@ help = on_command("help", aliases={'帮助'})
 @help.handle()
 async def _(bot: Bot, event: Event, state: T_State):
   await help.finish("""
+  zerobot v0.9
+  -------------------------------------
   目前的插件如下：
   1.问好        
-  命令： /hi 、/こんにちは 等
+  命令： hi 、こんにちは 等
+
   2.翻译翻译     
   命令： @bot /nbnhhsh、@bot /翻译翻译 等
   eg. @bot /翻译翻译 惊喜
+
   3.setu
   命令：来点、setu 等
+  (青壮年模式，青少年模式解禁)
   eg. @bot 来点 眼镜 伏特加
+
   4.jg
   命令： @bot jg
-  5.Asoul发病小作文
+
+  5.Asoul<del>发病</del>小作文
   命令： @bot /发病、/小作文
   eg. @bot /发病 圣
+
+  6.以图搜图
+  命令： @bot /搜图 图片
+  -------------------------------------
   """)

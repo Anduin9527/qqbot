@@ -1,22 +1,23 @@
 from time import sleep
+from tokenize import group
 from async_timeout import asyncio
 from nonebot import on_keyword, on_command
 from nonebot.rule import to_me
 from nonebot.typing import T_State
 from nonebot.permission import SUPERUSER
-from nonebot.adapters.cqhttp import Bot, Event, MessageSegment
+from nonebot.adapters.cqhttp import Bot, Event, MessageSegment, GroupMessageEvent
 from pydantic.tools import T
 
 from .data_source import get_pic_url
 
 setu = on_keyword({'setu', '涩图', '色图', '来点', '色图来'}, priority=7)
-r18_switch = on_command(
-    '就这', aliases={'来点给劲的', '不够涩'}, rule=to_me(), permission=SUPERUSER, priority=8)
+r18_on = on_keyword({'青壮年模式'}, priority=8)
+r18_off = on_keyword({'青少年模式'}, priority=8)
 r18 = False
 
 
 @setu.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
 
   key_word = str(event.get_message()).strip()
   words = ['setu', '涩图',  '来点', '色图来', '色图']
@@ -36,12 +37,27 @@ async def _(bot: Bot, event: Event, state: T_State):
   await setu.finish()
 
 
-@r18_switch.handle()
-async def _(bot: Bot, event: Event, state: T_State):
+@r18_on.handle()
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
+  global r18
+  if r18:
+    await setu.finish("已经是青壮年模式！")
+  else:
+    r18 = True
+    pic_path = "http://ww4.sinaimg.cn/large/ceeb653ejw1fadcutjn80j206405ia9x.jpg"
+    msg = MessageSegment.image(pic_path)
+    await setu.send(msg)
+    await setu.finish("启动青壮年模式！")
+
+
+@r18_off.handle()
+async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
   global r18
   if r18:
     r18 = False
-    await setu.finish("启动青少年模式！")
+    await setu.finish("为呵护未成年人健康成长, 特别推出青少年模式,该模式下部分功能无法正常使用。请监护人主动选择, 并设置监护密码。")
   else:
-    r18 = True
-    await setu.finish("启动青壮年模式！")
+    pic_path = "http://wx2.sinaimg.cn/large/ab4cb34agy1fmatr6yiswj20dw0dwq3o.jpg"
+    msg = MessageSegment.image(pic_path)
+    await setu.send(msg)
+    await setu.finish("已经是青少年模式！")

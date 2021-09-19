@@ -4,7 +4,7 @@ from typing import Dict
 from aiohttp.client_exceptions import ClientError
 from nonebot.plugin import on_command, on_message
 from nonebot.rule import to_me
-from nonebot.adapters.cqhttp import Bot, MessageEvent, GroupMessageEvent, Message
+from nonebot.adapters.cqhttp import Bot, MessageEvent, GroupMessageEvent, Message, MessageSegment
 from nonebot.typing import T_State
 
 from .ex import get_des as get_des_ex
@@ -54,7 +54,7 @@ async def handle_first_receive(bot: Bot, event: MessageEvent, state: T_State):
   pass
 
 
-@setu.got("mod", prompt="从哪里查找呢? ex(暂时不能使用)/nao/trace/iqdb/ascii2d")
+@setu.got("mod", prompt="从哪里查找呢? ex(暂时不能使用)/nao/iqdb/ascii2d")
 async def get_func(bot: Bot, event: MessageEvent, state: dict):
   pass
 
@@ -74,8 +74,10 @@ async def get_setu(bot: Bot, event: MessageEvent, state: T_State):
       async for msg in limiter(get_des(url, mod), bot.config.search_limit or 2):
         await bot.send(event=event, message=msg)
       # image_data: List[Tuple] = await get_pic_from_url(url)
-      await setu.finish("hso")
+      await setu.finish("hso~")
     else:
+      pic_url = r"https://v2fy.com/asset/0i/ChineseBQB/078BeiFang_%E5%8C%97%E6%96%B9%E6%A0%96%E5%A7%AC_BQB/%E5%8C%97%E6%96%B9%E6%A0%96%E5%A7%AC00184-%E5%B0%B1%E6%98%AF%E6%80%AA%E4%BD%A0.jpg"
+      await setu.send(message=MessageSegment.image(pic_url))
       await setu.reject("这不是图,重来!")
   except (IndexError, ClientError):
     await bot.send(event, traceback.format_exc())

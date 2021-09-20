@@ -32,7 +32,7 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
   result = await setu.send(message=MessageSegment.image(img_url))
   if r18:
     message_id = result['message_id']
-    sleep(10)
+    await asyncio.sleep(10)
     await bot.delete_msg(message_id=message_id)
   await setu.finish()
 

@@ -10,7 +10,7 @@ help = on_command("help", aliases={'帮助'})
 @help.handle()
 async def _(bot: Bot, event: Event, state: T_State):
   await help.finish("""
-  zerobot v1.12
+  zerobot v1.2
   -------------------------------------
   目前的插件如下：
   1.问好        
@@ -34,5 +34,9 @@ async def _(bot: Bot, event: Event, state: T_State):
 
   6.以图搜图
   命令： @bot /搜图 图片
+
+  7.精灵宝可梦(怪)
+  命令：/精灵 占卜的姓名
+       /融合 精灵1 精灵2
   -------------------------------------
   """)

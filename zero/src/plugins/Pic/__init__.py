@@ -1,9 +1,11 @@
 import pathlib
-from nonebot import on_command, on_message
-from nonebot.plugin import on_keyword
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
 from nonebot.typing import T_State
-from nonebot.adapters.cqhttp import Message, Bot, Event, MessageSegment
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 
 
 jg = on_keyword(keywords={"jg", "杰哥", "yyj"}, rule=to_me(), priority=10)

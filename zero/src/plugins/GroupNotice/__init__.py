@@ -1,8 +1,11 @@
-from nonebot import on_message, on_notice
-from nonebot.adapters import Bot, Event
-from nonebot.adapters.cqhttp import GroupIncreaseNoticeEvent, GroupDecreaseNoticeEvent, Message
+from nonebot.plugin import on_command, on_keyword, on_message,on_notice
+from nonebot.rule import to_me
 from nonebot.typing import T_State
-from nonebot.matcher import *
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.event import GroupIncreaseNoticeEvent,GroupDecreaseNoticeEvent
+from nonebot.adapters.cqhttp.bot import Bot
 
 group_notice = on_notice()
 

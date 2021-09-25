@@ -1,13 +1,13 @@
-from time import sleep
-from tokenize import group
-from async_timeout import asyncio
-from nonebot import on_keyword, on_command
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
 from nonebot.typing import T_State
-from nonebot.permission import SUPERUSER
-from nonebot.adapters.cqhttp import Bot, Event, MessageSegment, GroupMessageEvent
-from pydantic.tools import T
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters.cqhttp.event import GroupMessageEvent
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 
+import asyncio
 from .data_source import get_pic_url
 
 setu = on_keyword({'setu', '涩图', '色图', '来点', '色图来'}, priority=7)

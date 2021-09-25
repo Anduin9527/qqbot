@@ -2,10 +2,14 @@
 import traceback
 from typing import Dict
 from aiohttp.client_exceptions import ClientError
-from nonebot.plugin import on_command, on_message
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
-from nonebot.adapters.cqhttp import Bot, MessageEvent, GroupMessageEvent, Message, MessageSegment
 from nonebot.typing import T_State
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters.cqhttp.event import GroupMessageEvent
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 
 from .ex import get_des as get_des_ex
 from .iqdb import get_des as get_des_iqdb

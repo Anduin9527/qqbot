@@ -1,12 +1,13 @@
-from nonebot import on_command, on_keyword, on_message
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
 from nonebot.typing import T_State
-from nonebot.matcher import *
-from nonebot.adapters.cqhttp import Message, Bot, MessageEvent
-from nonebot.adapters import Event
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 import numpy as np
 
-hello = on_keyword({'你好','hello', 'hi', 'こんにちは'}, priority=2)
+hello = on_keyword({'你好', 'hello', 'hi', 'こんにちは'}, priority=2)
 hello_list = ['안녕하세요.', 'hello', 'Aloha',
               'Hallo', 'こんにちは', 'Bonjour', '你好QwQ', 'Привет', 'hola!']
 

@@ -13,6 +13,7 @@
 - [x] 发送服务器本地图片
 - [x] 发setu [lolicon api](https://api.lolicon.app/#/)
 - [x] 接入[Asoul发病小作文](https://github.com/ASoulCnki/ASoulCnkiBackend)
+- [x] 接入[枝江作文展](https://asoulcnki.asia/)
 - [x] 接入[以图搜图](https://github.com/synodriver/nonebot_plugin_picsearcher)
 - [x] 神奇宝贝杂交系统
 - [ ] 接入腾讯云COS

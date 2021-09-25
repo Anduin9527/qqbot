@@ -1,8 +1,10 @@
-from nonebot import on_keyword, on_command
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
 from nonebot.typing import T_State
-from nonebot.permission import SUPERUSER
-from nonebot.adapters.cqhttp import Bot, Event, MessageSegment
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 
 help = on_command("help", aliases={'帮助'})
 
@@ -28,9 +30,9 @@ async def _(bot: Bot, event: Event, state: T_State):
   4.jg
   命令： @bot jg
 
-  5.Asoul<del>发病</del>小作文
-  命令： @bot /发病、/小作文
-  eg. @bot /发病 圣
+  5.狗屁不通小作文
+  命令： @bot /写点
+  eg. @bot /写点 圣
 
   6.以图搜图
   命令： @bot /搜图 图片
@@ -38,5 +40,9 @@ async def _(bot: Bot, event: Event, state: T_State):
   7.精灵宝可梦(怪)
   命令：/精灵 占卜的姓名
        /融合 精灵1 精灵2
+
+  8.一个魂儿小作文
+  命令: /发病 
+  eg. /发病 杰哥
   -------------------------------------
   """)

@@ -1,9 +1,13 @@
 import httpx
 import asyncio
 from random import choice, randint
+from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import to_me
-from nonebot.adapters.cqhttp import Bot, Event
-from nonebot.plugin import on_command
+from nonebot.typing import T_State
+from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.message import Message, MessageSegment
+from nonebot.adapters._base import Event
+from nonebot.adapters.cqhttp.bot import Bot
 
 trans = on_command("nbnhhsh", rule=to_me(), block=True,
                    aliases={"翻译翻译", "能不能好好说话", "翻译", "你给我翻译翻译，什么叫他妈的"})

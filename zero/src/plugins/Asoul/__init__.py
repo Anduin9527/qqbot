@@ -9,7 +9,7 @@ from nonebot.adapters.cqhttp.bot import Bot
 from .data_source import get_article, get_msg
 
 goupi_artical = on_command('写点', aliases={'狗屁不通'}, rule=to_me(), priority=5)
-asoul = on_command('发病', priority=5)
+asoul = on_command('发病', aliases={'犯病'}, priority=5)
 
 
 @goupi_artical.handle()

@@ -1,6 +1,6 @@
 <div align="center"> 
 
-# ZeroBot v1.2
+# ZeroBot v1.3
 
 基于 [Nonebot2](https://github.com/nonebot/nonebot2)以及[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)实现的qq机器人
 

@@ -12,7 +12,7 @@ help = on_command("help", aliases={'帮助'})
 @help.handle()
 async def _(bot: Bot, event: Event, state: T_State):
   await help.finish("""
-  zerobot v1.2
+  zerobot v1.3
   -------------------------------------
   目前的插件如下：
   1.问好        

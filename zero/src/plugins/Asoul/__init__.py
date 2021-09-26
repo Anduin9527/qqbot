@@ -29,4 +29,5 @@ async def _(bot: Bot, event: MessageEvent, state: T_State):
   if keyword:
     msg = msg.replace('嘉然', keyword)
     msg = msg.replace('然然', keyword)
+    msg = msg.replace('小姐', '')
   await asoul.finish(msg)

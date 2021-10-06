@@ -16,6 +16,7 @@
 - [x] 接入[枝江作文展](https://asoulcnki.asia/)
 - [x] 接入[以图搜图](https://github.com/synodriver/nonebot_plugin_picsearcher)
 - [x] 神奇宝贝杂交系统
+- [x] 每日新闻60s
 - [ ] 接入腾讯云COS
 - [ ] Roll点系统
 - [ ] 成语接龙

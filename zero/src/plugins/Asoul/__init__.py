@@ -2,6 +2,7 @@ from nonebot.plugin import on_command, on_keyword, on_message
 from nonebot.rule import keyword, to_me
 from nonebot.typing import T_State
 from nonebot.adapters.cqhttp import MessageEvent
+from nonebot.adapters.cqhttp.utils import escape, unescape
 from nonebot.adapters.cqhttp.message import Message, MessageSegment
 from nonebot.adapters._base import Event
 from nonebot.adapters.cqhttp.bot import Bot
@@ -29,5 +30,7 @@ async def _(bot: Bot, event: MessageEvent, state: T_State):
   if keyword:
     msg = msg.replace('嘉然', keyword)
     msg = msg.replace('然然', keyword)
+    msg = msg.replace('嘉心', keyword)
+    msg = msg.replace('嘉', keyword)
     msg = msg.replace('小姐', '')
   await asoul.finish(msg)

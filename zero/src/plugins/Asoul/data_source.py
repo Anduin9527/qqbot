@@ -16,7 +16,7 @@ import random
 
 
 async def get_msg() -> str:
-  pageNum = random.randrange(1, 3000)
+  pageNum = random.randint(1, 3000)
 
   url = "https://asoulcnki.asia/v1/api/ranking/"
   headers = {

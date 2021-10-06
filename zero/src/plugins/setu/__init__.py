@@ -29,6 +29,8 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
   img_url = await get_pic_url(tag=tags, r18=r18)
   if not img_url:
     await setu.finish('找不到相关的图o')
+  if img_url == 'time out':
+    await setu.finish('搜索超时，坏掉了啦，都是你害的', at_sender=True)
   result = await setu.send(message=MessageSegment.image(img_url))
   if r18:
     message_id = result['message_id']

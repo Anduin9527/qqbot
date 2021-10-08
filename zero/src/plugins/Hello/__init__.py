@@ -14,7 +14,7 @@ hello_list = ['안녕하세요.', 'hello', 'Aloha',
 
 @hello.handle()
 async def hello_(bot: Bot, event: MessageEvent):
-  msg = np.random.choice(hello_list)+"  "+str(event.sender.nickname)
+  msg = np.random.choice(hello_list)
   await hello.finish(message=msg,
                      at_sender=True
                      )

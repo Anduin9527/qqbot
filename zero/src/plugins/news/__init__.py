@@ -11,6 +11,8 @@ from nonebot import get_driver
 import aiohttp
 news_60s = require('nonebot_plugin_apscheduler').scheduler
 
+groups = [733396632, 1137819896]
+
 
 @news_60s.scheduled_job('cron', hour=8, minute=0)
 async def _():
@@ -26,4 +28,5 @@ async def _():
     async with session.get(url, params=params) as r:
       response = await r.json()
       img_url: str = response['data']['image'].split('!')[0]
-  await bot.send_group_msg(group_id=1137819896, message=MessageSegment.image(img_url))
+  for group in groups:
+    await bot.send_group_msg(group_id=group, message=MessageSegment.image(img_url))

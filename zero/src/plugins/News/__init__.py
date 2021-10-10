@@ -1,4 +1,3 @@
-import imp
 from nonebot.plugin import on_command, on_keyword, on_message, require
 from nonebot.rule import to_me
 from nonebot.typing import T_State
@@ -11,7 +10,7 @@ from nonebot import get_driver
 import aiohttp
 news_60s = require('nonebot_plugin_apscheduler').scheduler
 
-groups = [733396632, 1137819896]
+groups = get_driver().config.groups
 
 
 @news_60s.scheduled_job('cron', hour=8, minute=0)

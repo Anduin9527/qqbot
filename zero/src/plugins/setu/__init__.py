@@ -1,4 +1,6 @@
-from nonebot.plugin import on_command, on_keyword, on_message
+from email import message
+from lxml import etree
+from nonebot.plugin import on_command, on_keyword, on_message, require
 from nonebot.rule import to_me
 from nonebot.typing import T_State
 from nonebot.adapters.cqhttp import MessageEvent
@@ -6,10 +8,13 @@ from nonebot.adapters.cqhttp.message import Message, MessageSegment
 from nonebot.adapters.cqhttp.event import GroupMessageEvent
 from nonebot.adapters._base import Event
 from nonebot.adapters.cqhttp.bot import Bot
-
+from nonebot import get_driver
+import aiohttp
 import asyncio
-from .data_source import get_pic_url
+from .data_source import get_pic_url, get_mangabz_url
 
+monday_bob = require('nonebot_plugin_apscheduler').scheduler
+# monday = on_command('monday',priority=5)
 setu = on_keyword({'setu', '涩图', '色图', '来点', '色图来'}, priority=7)
 r18_on = on_keyword({'青壮年模式'}, priority=8)
 r18_off = on_keyword({'青少年模式'}, priority=8)
@@ -63,3 +68,22 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     msg = MessageSegment.image(pic_path)
     await setu.send(msg)
     await setu.finish("已经是青少年模式！")
+
+
+@monday_bob.scheduled_job('cron', hour=7, minute=0, day_of_week="mon")
+async def _():
+  driver = get_driver()
+  groups = get_driver().config.groups
+  BOT_ID: str = str(driver.config.bot_id)
+  bot = driver.bots[BOT_ID]
+  urls = await get_mangabz_url()
+  for group in groups:
+    await bot.send_group_msg(group_id=group, message="星期一也要好好加油!")
+    for url in urls:
+      await bot.send_group_msg(group_id=group, message=MessageSegment.image(url))
+
+# @monday.handle()
+# async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
+#   urls = await get_mangabz_url()
+#   for url in urls:
+#     await monday.send(MessageSegment.image(url))

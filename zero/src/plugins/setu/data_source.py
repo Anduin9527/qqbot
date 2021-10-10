@@ -1,6 +1,11 @@
 import aiohttp
+import re
+import execjs
+import requests
+import urllib.parse
 from nonebot.log import logger
 from nonebot.adapters.cqhttp.exception import NetworkError
+
 
 async def get_pic_url(tag: list, r18=False) -> str:
   url = 'https://api.lolicon.app/setu/v2'
@@ -26,3 +31,31 @@ async def get_pic_url(tag: list, r18=False) -> str:
       return result
   except NetworkError:
     return 'time out'
+
+
+async def get_mangabz_url():
+  url = "http://www.mangabz.com/m200091/"
+  headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36",
+             "Referer": url,
+             "Cookie": "image_time_cookie=185960|637694883538371062|0,185961|637694883592614831|0,187013|637694883614626650|0,100435|637694885955661627|0,200091|637694946275878939|5",
+             }
+  async with aiohttp.ClientSession() as session:
+    async with session.get(url, headers=headers) as rspo:
+      r = await rspo.text()
+      mangabz_cid = re.findall("MANGABZ_CID=(.*?);", r)[0]
+      mangabz_mid = re.findall("MANGABZ_MID=(.*?);", r)[0]
+      page_total = re.findall("MANGABZ_IMAGE_COUNT=(.*?);", r)[0]
+      mangabz_viewsign_dt = re.findall(
+          "MANGABZ_VIEWSIGN_DT=\"(.*?)\";", r)[0]
+      mangabz_viewsign = re.findall(
+          "MANGABZ_VIEWSIGN=\"(.*?)\";", r)[0]
+    js_url = url + "chapterimage.ashx?" + "cid=%s&page=%s&key=&_cid=%s&_mid=%s&_dt=%s&_sign=%s" % (
+        mangabz_cid, page_total, mangabz_cid, mangabz_mid, urllib.parse.quote(mangabz_viewsign_dt), mangabz_viewsign)
+    async with session.get(js_url, headers=headers) as rspo:
+      js = await rspo.text()
+  img_urls = []
+  for i in range(int(page_total)):
+    i += 1
+    imagesList = execjs.eval(js)
+    img_urls.append(imagesList[0].split('?cid')[0])
+  return img_urls

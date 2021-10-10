@@ -46,5 +46,12 @@
       "from nonebot.adapters.cqhttp.bot import Bot"
     ],
     "description": "nonebot import"
-  }
+  },
+    "Print to bot": {
+    "prefix": "bot",
+    "body": [
+      "bot: Bot, event: Event, state: T_State"
+    ],
+    "description": "bot"
+    }
 }

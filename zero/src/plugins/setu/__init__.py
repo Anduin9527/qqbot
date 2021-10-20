@@ -14,7 +14,6 @@ import asyncio
 from .data_source import get_pic_url, get_mangabz_url
 
 monday_bob = require('nonebot_plugin_apscheduler').scheduler
-# monday = on_command('monday',priority=5)
 setu = on_keyword({'setu', '涩图', '色图', '来点', '色图来'}, priority=7)
 r18_on = on_keyword({'青壮年模式'}, priority=8)
 r18_off = on_keyword({'青少年模式'}, priority=8)
@@ -23,25 +22,29 @@ r18 = False
 
 @setu.handle()
 async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
-
   key_word = str(event.get_message()).strip()
   words = ['setu', '涩图',  '来点', '色图来', '色图']
   for word in words:
-    key_word = key_word.replace(word, '')
-  tags = key_word.split()
-  if len(tags) > 2:
-    await setu.finish("最多只支持两个关键词检索哦！关键词之间请用空格分隔")
-  img_url = await get_pic_url(tag=tags, r18=r18)
-  if not img_url:
-    await setu.finish('找不到相关的图o')
-  if img_url == 'time out':
-    await setu.finish('搜索超时，坏掉了啦，都是你害的', at_sender=True)
-  result = await setu.send(message=MessageSegment.image(img_url))
-  if r18:
-    message_id = result['message_id']
-    await asyncio.sleep(10)
-    await bot.delete_msg(message_id=message_id)
-  await setu.finish()
+      key_word = key_word.replace(word, '')
+  if key_word == '星期一' or key_word == "monday" or key_word == '周一':
+    img_urls = await get_mangabz_url(1)
+    for img_url in img_urls:
+      await setu.finish(message=MessageSegment.image(img_url))
+  else:
+    tags = key_word.split()
+    if len(tags) > 2:
+      await setu.finish("最多只支持两个关键词检索哦！关键词之间请用空格分隔")
+    img_url = await get_pic_url(tag=tags, r18=r18)
+    if not img_url:
+      await setu.finish('找不到相关的图o')
+    if img_url == 'time out':
+      await setu.finish('搜索超时，坏掉了啦，都是你害的', at_sender=True)
+    result = await setu.send(message=MessageSegment.image(img_url))
+    if r18:
+      message_id = result['message_id']
+      await asyncio.sleep(10)
+      await bot.delete_msg(message_id=message_id)
+    await setu.finish()
 
 
 @r18_on.handle()

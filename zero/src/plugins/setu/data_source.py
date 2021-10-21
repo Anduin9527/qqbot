@@ -1,7 +1,6 @@
 import aiohttp
 import re
 import execjs
-import requests
 import urllib.parse
 from nonebot.log import logger
 from nonebot.adapters.cqhttp.exception import NetworkError

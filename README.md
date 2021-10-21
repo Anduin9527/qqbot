@@ -1,6 +1,6 @@
 <div align="center"> 
 
-# ZeroBot v1.4
+# ZeroBot v1.5
 
 基于 [Nonebot2](https://github.com/nonebot/nonebot2)以及[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)实现的qq机器人
 
@@ -18,8 +18,10 @@
 - [x] 神奇宝贝杂交系统
 - [x] 每日新闻60s
 - [x] bang！
+- [x] B站视频解析
+- [x] 接入[glot](https://glot.io/api)运行代码
 - [ ] 接入腾讯云COS
 - [ ] Roll点系统
 - [ ] 成语接龙
-- [ ] 定时消息发送
+- [x] 定时消息发送
 

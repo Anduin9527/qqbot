@@ -12,7 +12,7 @@ help = on_command("help", aliases={'帮助'})
 @help.handle()
 async def _(bot: Bot, event: Event, state: T_State):
   await help.finish("""
-  zerobot v1.4
+  zerobot v1.5
   -------------------------------------
   目前的插件如下：
   1.问好        
@@ -49,5 +49,8 @@ async def _(bot: Bot, event: Event, state: T_State):
   增加倍率会随机填充1~10颗空包弹
   命令: /bang
   eg. /bang 倍率(默认1分钟)
+
+  10.运行代码
+  命令: /run
   -------------------------------------
   """)

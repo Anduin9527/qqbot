@@ -26,8 +26,44 @@ async def _(bot: Bot, event: Event, state: T_State):
       msg = msg[:-3]
       await lang_list.finish(msg)
 
-langs = ["assembly", "ats", "bash", "c", "clojure", "cobol", "coffeescript", "cpp", "crystal", "csharp", "d", "elixir", "elm", "erlang", "fsharp", "go", "groovy", "haskell",
-         "idris", "java", "javascript", "julia", "kotlin", "lua", "mercury", "nim", "nix", "ocaml", "perl", "php", "python", "raku", "ruby", "rust", "scala", "swift", "typescript"]
+langs = {"assembly": ".asm",
+         "ats": ".dats",
+         "bash": ".sh",
+         "c": ".c",
+         "clojure": ".clj",
+         "cobol": ".cob",
+         "coffeescript": ".coffee",
+         "cpp": ".cpp",
+         "crystal": ".cr",
+         "csharp": ".cs",
+         "d": ".d",
+         "elixir": ".ex",
+         "elm": ".elm",
+         "erlang": "erl",
+         "fsharp": "fs",
+         "go": ".go",
+         "groovy": ".groovy",
+         "haskell": ".hs",
+         "idris": ".idr",
+         "java": "java",
+         "javascript": ".js",
+         "julia": ".jl",
+         "kotlin": ".kt",
+         "lua": ".lua",
+         "mercury": ".m",
+         "nim": ".nim",
+         "nix": ".nix",
+         "ocaml": ".ml",
+         "perl": ".pl",
+         "php": ".php",
+         "python": ".py",
+         "raku": ".raku",
+         "ruby": ".rb",
+         "rust": ".rs",
+         "scala": ".scala",
+         "swift": ".swift",
+         "typescript": ".ts"
+         }
 
 
 @run.handle()
@@ -38,7 +74,7 @@ async def _(bot: Bot, event: Event, state: T_State):
 @run.got("lang", prompt="输入语言类型（使用/code list 查看支持语言）")
 async def _(bot: Bot, event: Event, state: T_State):
   if state["lang"] == "/code list":
-    await run.reject(str(langs))
+    await run.reject(str(langs.keys()))
   if state["lang"] in langs:
     pass
   else:
@@ -53,9 +89,12 @@ async def _(bot: Bot, event: Event, state: T_State):
       'Content-type': 'application/json',
   }
   content = str(state["content"]).replace('\n', "n").replace(
-      '\r', '\\').replace("&#91;", "[").replace("&#93;", "]")
+      '\r', '\\').replace("&#91;", "[").replace("&#93;", "]").replace(
+      "\"", "\\\"").replace("\'", "\\'")
   lang = state["lang"]        # 编程语言
-  data = '{"files": [{"name": "main.py", "content": "%(content)s"}]}' % {
+  file = langs[lang]
+  data = '{"files": [{"name": "%(file)s", "content": "%(content)s"}]}' % {
+      "file": "main"+file,
       "content": content}
   url += lang+"/latest"
   try:
@@ -67,4 +106,4 @@ async def _(bot: Bot, event: Event, state: T_State):
         else:
           await run.finish("stderr:\n"+response["stderr"], at_sender=True)
   except KeyError:
-    await run.finish("执行失败，执行超时或格式错误\n", at_sender=True)
+    await run.finish("执行失败，执行超时或格式错误\n(中之人是个笨比，各种字符转义都没neng好)\n", at_sender=True)

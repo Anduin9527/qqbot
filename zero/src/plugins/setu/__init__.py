@@ -25,7 +25,7 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
   key_word = str(event.get_message()).strip()
   words = ['setu', '涩图',  '来点', '色图来', '色图']
   for word in words:
-      key_word = key_word.replace(word, '')
+    key_word = key_word.replace(word, '')
   if key_word == '星期一' or key_word == "monday" or key_word == '周一':
     img_urls = await get_mangabz_url(1)
     for img_url in img_urls:

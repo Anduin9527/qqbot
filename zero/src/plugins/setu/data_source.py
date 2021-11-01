@@ -39,7 +39,14 @@ async def get_mangabz_url(is_random=0):
              "Cookie": "image_time_cookie=185960|637694883538371062|0,185961|637694883592614831|0,187013|637694883614626650|0,100435|637694885955661627|0,200091|637694946275878939|5",
              }
   if is_random == 0:
-    url = "http://www.mangabz.com/m200091/"
+    url_dic = "http://www.mangabz.com/1312bz/"
+    async with aiohttp.ClientSession() as session:
+      async with session.get(url_dic, headers=headers) as rspo:
+        r = await rspo.text()
+        p = etree.HTML(r, parser=None)
+        url = "http://www.mangabz.com" + \
+            p.xpath(
+              '//*[@id="chapterlistload"]/a[1]/@href'[0])
   else:
     url_dic = "http://www.mangabz.com/1312bz/"
     async with aiohttp.ClientSession() as session:
@@ -48,7 +55,7 @@ async def get_mangabz_url(is_random=0):
         p = etree.HTML(r, parser=None)
         url = "http://www.mangabz.com" + \
             p.xpath(
-              '//*[@id="chapterlistload"]/a[{}]/@href'.format(random.randint(1, 389)))[0]
+                '//*[@id="chapterlistload"]/a[{}]/@href'.format(random.randint(1, 389)))[0]
   async with aiohttp.ClientSession() as session:
     async with session.get(url, headers=headers) as rspo:
       r = await rspo.text()

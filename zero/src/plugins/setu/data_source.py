@@ -46,7 +46,7 @@ async def get_mangabz_url(is_random=0):
         p = etree.HTML(r, parser=None)
         url = "http://www.mangabz.com" + \
             p.xpath(
-              '//*[@id="chapterlistload"]/a[1]/@href'[0])
+              '//*[@id="chapterlistload"]/a[1]/@href')[0]
   else:
     url_dic = "http://www.mangabz.com/1312bz/"
     async with aiohttp.ClientSession() as session:

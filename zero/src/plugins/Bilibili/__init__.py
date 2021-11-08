@@ -51,7 +51,7 @@ tags:{}
 @Parse_short.handle()
 async def _(bot: Bot, event: Event, state: T_State):
   await Parse_short.send("好短，但是还是得解析")
-  url = str(event.get_message()).split("https://b23.tv/")[1]
+  url = str(event.get_message()).split("b23.tv/")[1]
   url = "https://b23.tv/" + url
   try:
     async with aiohttp.ClientSession() as session:

@@ -73,7 +73,7 @@ async def _(bot: Bot, event: GroupMessageEvent, state: T_State):
     await setu.finish("已经是青少年模式！")
 
 
-@monday_bob.scheduled_job('cron', hour=8, minute=55, day_of_week="mon")
+@monday_bob.scheduled_job('cron', hour=7, minute=30, day_of_week="mon")
 async def _():
   driver = get_driver()
   groups = get_driver().config.groups

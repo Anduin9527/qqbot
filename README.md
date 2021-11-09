@@ -20,6 +20,7 @@
 - [x] bang！
 - [x] B站视频解析
 - [x] 接入[glot](https://glot.io/api)运行代码
+- [x] 文明6黄金时代mod的领袖和文明图检索
 - [ ] 接入腾讯云COS
 - [ ] Roll点系统
 - [ ] 成语接龙

@@ -10,7 +10,7 @@ from nonebot import get_driver
 import csv
 import os
 civil_list = on_command("文明列表", priority=3)
-search = on_command("文明查询", aliases={'文明查找'}, priority=3)
+search = on_command("文明", aliases={'文明查找'}, priority=3)
 cosaddr = get_driver().config.tencentcos
 
 
@@ -25,6 +25,8 @@ async def _(bot: Bot, event: Event, state: T_State):
 async def _(bot: Bot, event: Event, state: T_State):
   f = 0
   keyword = str(event.get_message())
+  if keyword == "":
+    await search.finish("记得输入领袖或者文明喔！")
   with open(os.getcwd()+'/src/plugins/Civilization/Civ.csv', 'r')as f:
     csvf = csv.DictReader(f)
     for row in csvf:

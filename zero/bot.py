@@ -28,6 +28,8 @@ load_plugin("nonebot_plugin_test")
 # web私聊监视插件
 # nonebot.load_plugin("nonebot_plugin_web")
 # 定时任务插件
+load_plugin("nonebot_plugin_youthstudy")
+# 青年大学习插件
 nonebot.init(apscheduler_autostart=True)
 nonebot.init(apscheduler_config={
     "apscheduler.timezone": "Asia/Shanghai"

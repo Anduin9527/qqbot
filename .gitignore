@@ -17,7 +17,9 @@ cq/data/voices/*
 cq/logs/*
 cq/nohup.out
 cq/session.token
-
+cq/data/leveldb-v2/*
+cq/data/image.db
+cq/data/video.db
 
 
 ### Python ###

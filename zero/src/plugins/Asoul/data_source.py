@@ -16,8 +16,8 @@ import random
 
 
 async def get_msg() -> str:
-  pageNum = random.randint(1, 3000)
-
+  pageNum = random.randint(1, 245)
+  index = random.randint(0, 8)
   url = "https://asoulcnki.asia/v1/api/ranking/v1/api/ranking/"
   headers = {
       'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36'}
@@ -34,7 +34,7 @@ async def get_msg() -> str:
       if r['message'] != "success":
         return r['message']
       else:
-        return r['data']['replies'][0]["content"]
+        return r['data']['replies'][index]["content"]
 
 
 async def get_article(words) -> str:
